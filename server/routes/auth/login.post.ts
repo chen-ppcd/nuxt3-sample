@@ -39,7 +39,7 @@ export default defineEventHandler(async event => {
       body,
     })
 
-    // get spesific user using ID
+    // get spesific user using 
     const user: User = await api(`/users/${body.id}`, {
       method: 'GET',
     })

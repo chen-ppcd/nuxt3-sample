@@ -22,14 +22,10 @@
 </template>
 
 <script setup lang="ts">
-
-import { Product } from '~/types/product'
-
-const props = defineProps({
+defineProps({
     product: {
-        type: Object as () => Product,
+        type: Object as PropType<Product>,
         required: true
     }
 })
-
 </script>

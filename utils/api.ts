@@ -13,10 +13,10 @@
 import { $fetch } from "ofetch"
 const api = $fetch.create({
   onRequest() {
-    console.log("onRequest")
+    console.log("onRequest, client:", import.meta.client)
   },
   onResponse() {
-    console.log("onResponse")
+    console.log("onResponse, client:", import.meta.client)
   },
 })
 

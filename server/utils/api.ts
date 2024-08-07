@@ -10,12 +10,11 @@
 // })
 
 // api.interceptors.response.use(null, error => console.log("axios error", error))
-
-import _api from "~/utils/api"
+import { $fetch } from 'ofetch';
 import { ProxyAgent } from 'undici'
 
 const dispatcher = new ProxyAgent("http://internalproxy.cmn-card.corp:15080")
-const api = _api.create({
+const api = $fetch.create({
   baseURL: "https://fakestoreapi.com",
   // @ts-expect-error
   dispatcher

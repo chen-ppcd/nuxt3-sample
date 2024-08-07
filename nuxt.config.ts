@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-08-06',
   devtools: { enabled: true },
+  experimental: {
+    asyncContext: true
+  },
   modules: [
     [
       '@pinia/nuxt', {
@@ -19,14 +22,11 @@ export default defineNuxtConfig({
     }
   ],
   imports: {
-    dirs: ['stores']
+    dirs: ['stores/**', 'types']
   },
   app: {
     head: {
       title: 'Nuxt 3 sample',
-      meta: [
-        { name: 'description', content: 'Occaecat mollit culpa labore labore ullamco ut.' }
-      ],
       script: [
         { src: 'https://kit.fontawesome.com/b026c11a83.js', crossorigin: 'anonymous' }
       ]

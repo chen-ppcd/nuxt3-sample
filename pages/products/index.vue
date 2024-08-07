@@ -9,7 +9,7 @@
   <!-- end of title -->
 
   <!-- categories -->
-  <ProoductCategory @category:change="categoryHandler"></ProoductCategory>
+  <ProoductCategory />
 
   <!-- products counter -->
   <section v-if="!pending" class="my-5 md:text-right">
@@ -35,8 +35,6 @@
 
 <script setup lang="ts">
 
-import { Product } from '~/types/product'
-
 useHead({
   title: 'Nuxt3 Sample - Products',
   meta: [
@@ -44,21 +42,7 @@ useHead({
   ]
 })
 
-// parse response
-const { data: products, pending }: { data: Ref<Product[]>, pending: Ref<boolean> } = await useFetch('/api/products', { lazy: true })
-
-const categoryHandler = async (URI: string) => {
-
-  pending.value = true
-
-  await useFetch(URI, {
-    key: URI,
-    onResponse({ response }) {
-      products.value = response?._data
-    }
-  })
-
-  pending.value = false
-}
+const products = computed(() => useProductStore().products)
+const pending = computed(() => useProductStore().pending)
 
 </script>

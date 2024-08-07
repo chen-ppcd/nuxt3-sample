@@ -1,5 +1,4 @@
 import { defineStore } from "pinia"
-import { Cart } from "~/types/cart"
 
 export const useCartStore = defineStore('cartStore', {
 

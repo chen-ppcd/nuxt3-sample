@@ -12,3 +12,5 @@ export type User = {
   username: string
   name: UserProfile
 }
+
+export type LoginInfo = Pick<User, "id" | "password" | "username">

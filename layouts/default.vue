@@ -19,7 +19,7 @@
         </nav>
     </header>
 
-    <NuxtLoadingIndicator :height="6"></NuxtLoadingIndicator>
+    <NuxtLoadingIndicator />
 
     <main class="p-8">
         <slot />
@@ -33,12 +33,10 @@ const { session } = await useSession()
 const router = useRouter()
 const carts = useCartStore()
 
-const isSidebar: Ref<boolean> = ref(false)
+const isSidebar = ref(false)
 
 const logout = async () => {
-
-    const { data } = await useFetch('/auth/logout', { method: 'PUT' })
-
+    const { data } = await useAuthLogout()
     if (data.value) router.push('/login')
 }
 

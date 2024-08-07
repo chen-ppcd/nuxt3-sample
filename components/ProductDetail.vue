@@ -29,15 +29,5 @@
 </template>
 
 <script setup lang="ts">
-
-import { Product } from '~/types/product'
-
-const props = defineProps({
-    product: {
-        type: Object as () => Product,
-        required: true
-    }
-})
-
-
+const product = computed(() => useProductStore().product as Product)
 </script>

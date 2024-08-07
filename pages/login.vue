@@ -46,7 +46,7 @@ definePageMeta({
   ]
 })
 // composables
-const app = useNuxtApp()
+const { $notyfError, $notyfSuccess } = useNuxtApp()
 const router = useRouter()
 
 // body
@@ -57,10 +57,6 @@ const id = ref()
 // DOM Element
 const button = ref<HTMLButtonElement | null>(null)
 
-// use notyf
-const error: any = app.$notyfError
-const success: any = app.$notyfSuccess
-
 // form handler
 const login = async () => {
 
@@ -69,20 +65,17 @@ const login = async () => {
   button!.value!.disabled = true
 
   // try to login
-  const { data } = await useFetch('/auth/login', {
-    method: 'POST',
-    body: {
+  const { data } = await useAuthLogin({
       username: username.value,
       password: password.value,
       id: id.value
-    }
   })
 
-  if (data?.value?.status) {
-    success('Login berhasil')
+  if (data.value?.status) {
+    $notyfSuccess('Login successfully!')
     router.push('/')
   } else {
-    error(`Login gagal! ${data?.value?.message}`)
+    $notyfError(`Login failed! ${data.value?.message}`)
   }
 
   // enabled
@@ -98,7 +91,7 @@ const getRandomUser = async (evt: MouseEvent) => {
   targetElement.innerText = 'getting ...'
   targetElement.disabled = true
 
-  const { data: user } = await useFetch('/api/users')
+  const { data: user } = await useUserRepo().getRandomUser()
 
   // auto fill
   if (user.value) {
@@ -108,7 +101,7 @@ const getRandomUser = async (evt: MouseEvent) => {
     id.value = user.value.id
   }
 
-  success('Berhasil mendapatkan kredensial user')
+  $notyfSuccess('get a random user successfully!')
 
   targetElement.innerText = 'Click here'
   targetElement.disabled = false

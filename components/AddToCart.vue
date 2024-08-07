@@ -78,7 +78,7 @@ const addCart = () => {
     userId
   })
 
-  notyfSuccess('Berhasil menambahkan item ke keranjang!')
+  notyfSuccess(`successfully added ${quantity.value} items to cart!`)
 }
 
 </script>
