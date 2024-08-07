@@ -12,6 +12,7 @@
 // api.interceptors.response.use(null, error => console.log("axios error", error))
 import { $fetch } from "ofetch"
 const api = $fetch.create({
+  baseURL: "https://fakestoreapi.com",
   onRequest() {
     console.log("onRequest, client:", import.meta.client)
   },

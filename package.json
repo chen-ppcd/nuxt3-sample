@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.2",
+    "@vueuse/core": "^10.11.0",
     "axios": "^1.7.3",
     "notyf": "^3.10.0",
     "pinia": "^2.2.0"

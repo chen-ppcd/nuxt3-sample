@@ -14,18 +14,18 @@ export const useProductStore = defineStore('productStore', {
 
   actions: {
     async getAllCategories() {
-      const categories = await api<string[]>('/api/products/category')
+      const categories = await api<string[]>('/products/categories')
       this.categories = categories
     },
     async getProducts(category?: string) {
       this.pending = true
-      const products = await api<Product[]>(category ? '/api/products/category/' + category : '/api/products')
+      const products = await api<Product[]>(category ? '/products/category/' + category : '/products')
       this.products = products
       this.pending = false
     },
     async getProductById(id: string) {
       try {
-        const data = await api<Product>(`https://fakestoreapi.com/products/${id}`)
+        const data = await api<Product>(`/products/${id}`)
         return this.product = data
       } catch {
         throw new Error('Product not found, id: ' + id)

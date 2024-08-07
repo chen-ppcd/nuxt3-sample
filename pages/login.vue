@@ -37,9 +37,7 @@ definePageMeta({
   middleware: [
     async (to: any, from: any) => {
       // get session
-      const { session } = await useSession()
-
-      if (session.value?.auth) {
+      if(useAuthInfo()) {
         return navigateTo({ path: '/' })
       }
     }
@@ -65,17 +63,17 @@ const login = async () => {
   button!.value!.disabled = true
 
   // try to login
-  const { data } = await useAuthLogin({
+  const { data, error } = await useAuthLogin({
       username: username.value,
       password: password.value,
       id: id.value
   })
-
-  if (data.value?.status) {
+console.log(data)
+  if (data.value) {
     $notyfSuccess('Login successfully!')
     router.push('/')
   } else {
-    $notyfError(`Login failed! ${data.value?.message}`)
+    $notyfError(`Login failed! ${error.value}`)
   }
 
   // enabled

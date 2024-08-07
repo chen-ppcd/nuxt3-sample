@@ -5,13 +5,15 @@ export default defineNuxtConfig({
   experimental: {
     asyncContext: true
   },
+  ssr: false,
   modules: [
     [
       '@pinia/nuxt', {
         autoImports: ['defineStore']
       }
     ],
-    '@nuxtjs/tailwindcss', '@sidebase/nuxt-session',
+    '@vueuse/nuxt',
+    '@nuxtjs/tailwindcss',
     '@nuxt/image', 'nuxt-og-image',
     '@pinia-plugin-persistedstate/nuxt'
   ],

@@ -11,7 +11,7 @@
                   </NuxtLink>
                 </li>
                 <li><NuxtLink to="/about">About Us</NuxtLink></li>
-                <li v-if="!session?.auth"><NuxtLink to="/login" class="btn btn-primary">Login</NuxtLink></li>
+                <li v-if="!useAuthInfo()"><NuxtLink to="/login" class="btn btn-primary">Login</NuxtLink></li>
                 <li v-else><button type="button" @click="logout" class="btn btn-primary">Logout</button></li>
             </ul>
             <!-- sidebar toggler -->
@@ -29,7 +29,6 @@
 <script setup lang="ts">
 
 // composabels
-const { session } = await useSession()
 const router = useRouter()
 const carts = useCartStore()
 

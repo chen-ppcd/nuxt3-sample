@@ -9,15 +9,15 @@
 </template>
 
 <script setup lang="ts">
-
-const { session } = await useSession()
-
 const getUserName = (): string => {
-
-  // get first and second name
-  const { firstname, lastname }: { firstname: string, lastname: string } = session.value?.auth?.name
-
-  return `${setUppercaseAtFirstChar(firstname)} ${setUppercaseAtFirstChar(lastname)}`
+  const auth = useAuthInfo()
+  const userInfo = useUserStore().userInfo
+  if (auth && userInfo) {
+    const { firstname, lastname } = userInfo.name
+    // get first and second name
+    return `${setUppercaseAtFirstChar(firstname)} ${setUppercaseAtFirstChar(lastname)}`
+  }
+  return "User"
 }
 
 const setUppercaseAtFirstChar = (word: string): string => {

@@ -25,7 +25,6 @@ import { Cart } from '~/types/cart';
 // composables
 const app = useNuxtApp()
 const route = useRoute()
-const { session } = await useSession()
 
 // use notyf
 const notyfSuccess: any = app.$notyfSuccess
@@ -35,7 +34,7 @@ const carts = useCartStore()
 
 // initial state
 const quantity: Ref<number> = ref(0)
-  const userId = session.value?.auth?.id
+const userId = useUserStore().userInfo?.id || -1
 
 // get product id at cart
 const availableCart: Ref<Cart | undefined> = ref(carts.getCartByProductId(route.params?.id))
