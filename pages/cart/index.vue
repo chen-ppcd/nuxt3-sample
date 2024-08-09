@@ -7,7 +7,7 @@
     <!-- card -->
     <div class="w-full p-4 rounded border mb-3 bg-white grid grid-cols-2 justify-between">
       <span>
-        <NuxtLink :to="`/products/${cart.productId}`" class="text-xl">{{ cart.title }}</NuxtLink>
+        <a :href="`/products/${cart.productId}`" class="text-xl">{{ cart.title }}</a>
         <p>{{ cart.quantity }} item</p>
       </span>
       <span class="text-right">

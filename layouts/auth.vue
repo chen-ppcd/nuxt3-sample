@@ -1,7 +1,7 @@
 <template>
     <header class="sticky top-0 left-0 right-0 z-20">
         <nav class="bg-white shadow-sm flex justify-between px-8 py-6">
-            <p class="font-semibold text-lg text-green-500" to="/">Nuxt3 Sample</p>
+            <a class="font-semibold text-lg text-green-500" href="/">Nuxt3 Sample</a>
         </nav>
     </header>
     

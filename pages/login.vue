@@ -38,7 +38,8 @@ definePageMeta({
     async (to: any, from: any) => {
       // get session
       if(useAuthInfo()) {
-        return navigateTo({ path: '/' })
+        location.href = '/'
+        // return navigateTo({ path: '/' })
       }
     }
   ]
@@ -71,7 +72,7 @@ const login = async () => {
 console.log(data)
   if (data.value) {
     $notyfSuccess('Login successfully!')
-    router.push('/')
+    location.href = '/'
   } else {
     $notyfError(`Login failed! ${error.value}`)
   }

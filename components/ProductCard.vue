@@ -17,7 +17,7 @@
                 </div>
             </section>
         </section>
-        <NuxtLink class="btn btn-primary mb-0" :to="`/products/${ product?.id }`">Detail Product</NuxtLink>
+        <a class="btn btn-primary mb-0" :href="`/products/${ product?.id }`">Detail Product</a>
     </section>
 </template>
 
