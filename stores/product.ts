@@ -16,6 +16,7 @@ export const useProductStore = defineStore('productStore', {
     async getAllCategories() {
       const categories = await api<string[]>('/products/categories')
       this.categories = categories
+      return { fetchedAt: new Date() }
     },
     async getProducts(category?: string) {
       this.pending = true

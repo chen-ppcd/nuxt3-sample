@@ -15,7 +15,16 @@
 
 <script setup lang="ts">
 // get categories
-await useAsyncData('categories', useProductStore().getAllCategories)
+await useAsyncData('categories', useProductStore().getAllCategories, {
+  getCachedData(key, nuxtApp) {
+    const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    if (!data) {
+      return null
+    }
+    const expiration = new Date(data.fetchedAt)
+    return expiration.setTime(expiration.getTime() + 5 * 1000) < Date.now() ? null : data
+  },
+})
 
 const active = ref('')
 const changed = (value: string): void => {
